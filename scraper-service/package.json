@@ -1,0 +1,54 @@
+{
+  "name": "fliplab-scraper-service",
+  "version": "1.0.0",
+  "description": "Standalone web scraper service for Facebook Marketplace and Poshmark data",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "test": "jest",
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint src/**/*.ts --fix"
+  },
+  "keywords": [
+    "scraper",
+    "facebook-marketplace",
+    "poshmark",
+    "fliplab",
+    "web-scraping",
+    "api"
+  ],
+  "author": "FlipLab Team",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "cheerio": "^1.0.0-rc.12",
+    "axios": "^1.6.0",
+    "dotenv": "^16.3.1",
+    "winston": "^3.11.0",
+    "rate-limiter-flexible": "^2.4.2",
+    "joi": "^17.11.0",
+    "compression": "^1.7.4"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/cors": "^2.8.17",
+    "@types/node": "^20.8.0",
+    "@types/compression": "^1.7.5",
+    "@types/cheerio": "^0.22.35",
+    "typescript": "^5.2.2",
+    "ts-node-dev": "^2.0.0",
+    "jest": "^29.7.0",
+    "@types/jest": "^29.5.8",
+    "eslint": "^8.51.0",
+    "@typescript-eslint/eslint-plugin": "^6.7.0",
+    "@typescript-eslint/parser": "^6.7.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  }
+}

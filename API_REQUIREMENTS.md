@@ -56,9 +56,9 @@ FlipLab integrates with multiple external APIs to provide comprehensive item ana
 
 ##### **Step 6: Configure Environment**
 ```env
-GOOGLE_CLOUD_PROJECT_ID=your-project-id-here
-GOOGLE_CLOUD_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\nYour private key content here\n-----END PRIVATE KEY-----\n"
-GOOGLE_CLOUD_CLIENT_EMAIL=fliplab-vision@your-project.iam.gserviceaccount.com
+GOOGLE_CLOUD_PROJECT_ID=fliplab
+GOOGLE_CLOUD_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\nMIIEuwIBADANBgkqhkiG9w0BAQEFAASCBKUwggShAgEAAoIBAQCwW0vH/PL0Y4wG\n4Onnqu8C1aA7JaZmwyXiUkJfIuIisljCFld3MgjbELz4iCWhOwT8H+7LFWlxbf2D\nYXHWCOsftR/v1X0gt+Z+Wo31T+b3OmosEIO3vKTbtIINVB9dQ68hX1AEchOgci3M\nwjCSBrCaZJNbHzi9bAAqR+PTY4PM64RZ1VD+3HRBrXGgCA0WOUU2/tKxMrxU8WB6\njzOmgtO01WxANXIpgzj+xyIsmVjYeSwGcuvn7Apt9ouNFEfEH5GIValE78bYibOG\nmrOmxWjo4dp03/j6IB4viHhcdX2tpBINk48pDXj151oZcOUVW5SrEq0p0SiVBpTi\n6EWpyxQ5AgMBAAECgf8bWriGbKsX/S4wYvKPsekg0hc9wA6aIereZU6mMw2gaXQa\n/BwqVjh0F5niyDtjUXmUdzTdiz9aY2p51m4xz3BTmrnkGYPZxKyb11qYPQHg7HlL\nccRR25DhWJOo6EN1KT/LjV0mqLXNTT3iuhGOlOW6Ykn4+FQfYtZ5DcLo0aa/7LDB\nmMBFKdBvYsNCbzuquOIoKuYd0BJrbwb9/yqk8wJ0N5DGHQXbKG7orfeL9JeF2OxY\nr3/9SPBjeZZVgUSDtd5Hd+MVsnGoipwNtwbvKZhyRWFtKcKH6Uz9bAU4iZhwA456\neK1H/ewmYg8V4BACjlNmeIEtkGk/mCqqReeW3bECgYEA3Y9FTri3aQyNJehDq+C3\npwFyDqa8EumfNA+kmj2WmzljqE4e4V8EoHk/RThBp3l4xXABfj5LcDQxVtbWvY4J\n3UkZ7eh5x7O8tLZJGBh+i5/VoaeBff69lQ5QfNgjTGK9eG2pTQweNFq4zEQhL+gy\n1aWWZmBTWSWr3NCaAvZF1OkCgYEAy8U4HxHHBKnDa0jld+z/R2qtcm2QlArZGL+l\nnREkLUlcr9tx3YvQReQqYDJbonfWkwExJIsMPtlZ6WKkCWoSKW9L2i372wFvqqie\nc6Sxle9hr5raujN/jt7GjlcWZhqmKwAr4FEI0UHotUF0XHbN72M0XGSVJLkw0t9j\nCDjk8tECgYBSZpSKQJzGDwr3zDhO1la3YAxBcrWD+ytgu2imjL1UobV0xQkrHKGl\n5TIo1lFkrgLCu3NytkxsQJ0RBPn8qbT1fdiM6OdR5IEMXLc2pPV7jEhxxNCeQX3U\nz+wTYndOU3LQNUjABP++zPbp0XTeUmeFmf4juTOGdkJC77o328wA8QKBgCbZmCSc\nUBR8hWyb/lwKDHXCSgVqDEmdc9y7FUlH7lzQAuLodOInePMKWGX00/G65WcrsAHm\nnNQSvoi3rMy6s3HA7XZQlBciQ/cGpQcpXE5Y0IgZfyBHF0fXA4Y55mRbKllCdBsV\neBfleAeuzg+e+w5sHJyM9L6GrF9YBdqYdlYxAoGBALE0+RKYsdRnjsKiIZbwJyua\nTs3Bv4SHu9KPNRuXoOCWo3JlhkquL2nchEqIckssTlhxoHtM5tyDb/hfhi+VLhux\nS6ggb2332gH+meBS+nUVqFoxgygVxEwO1QIP1ZdGxFJ7wNq23IXSInd8QHydVHLp\nj5sZjqn18EK8VgnfnkTV\n-----END PRIVATE KEY-----\n"
+GOOGLE_CLOUD_CLIENT_EMAIL=fliplab-vision@fliplab.iam.gserviceaccount.com
 ```
 
 #### **API Usage Example**
