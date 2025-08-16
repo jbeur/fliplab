@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
 import { ItemConfirmation as ItemConfirmationType } from '@/types';
 
 interface ItemConfirmationProps {
@@ -10,98 +9,130 @@ interface ItemConfirmationProps {
 }
 
 export default function ItemConfirmation({ item, onConfirm }: ItemConfirmationProps) {
-  const [isConfirmed, setIsConfirmed] = useState(false);
-  const [correctedName, setCorrectedName] = useState(item.itemName);
+  const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
+  const [correctedName, setCorrectedName] = useState('');
   const [showCorrection, setShowCorrection] = useState(false);
 
-  const handleConfirm = () => {
-    setIsConfirmed(true);
-    onConfirm(true, correctedName);
-  };
-
-  const handleDeny = () => {
-    setShowCorrection(true);
-  };
-
-  const handleCorrection = () => {
-    if (correctedName.trim()) {
-      onConfirm(false, correctedName);
+  const handleConfirm = (confirmed: boolean) => {
+    if (confirmed) {
+      onConfirm(true);
+    } else {
+      setShowCorrection(true);
     }
   };
 
+  const handleSubmitCorrection = () => {
+    onConfirm(true, correctedName.trim() || item.itemName);
+  };
+
+  const handleSkip = () => {
+    onConfirm(false);
+  };
+
   return (
-    <div className="p-6">
-      <div className="text-center mb-6">
-        <h2 className="text-2xl font-bold text-gray-800 mb-2">Confirm Item</h2>
-        <p className="text-gray-600">Is this what you're scanning?</p>
+    <div className="p-6 space-y-6">
+      {/* Header */}
+      <div className="text-center">
+        <h2 className="text-2xl font-bold text-gray-800 mb-2">Confirm Item Identification</h2>
+        <p className="text-gray-600">Is this what you&apos;re scanning?</p>
       </div>
 
-      {/* Generic Item Image */}
-      <div className="mb-6">
-        <Image
-          src={item.suggestedImage}
-          alt={`Generic ${item.itemName}`}
-          width={400}
-          height={300}
-          className="w-full h-64 object-cover rounded-xl mx-auto"
-        />
-      </div>
-
-      {/* Item Details */}
-      <div className="bg-gray-50 rounded-xl p-4 mb-6">
-        <div className="text-center">
-          <div className="text-lg font-semibold text-gray-800 mb-2">
-            {item.itemName}
-          </div>
-          <div className="text-sm text-gray-600 capitalize">
-            Category: {item.category}
-          </div>
+      {/* AI Identification */}
+      <div className="bg-blue-50 rounded-xl p-4 border border-blue-200">
+        <div className="text-sm text-blue-800 mb-2">
+          🤖 AI Identified:
+        </div>
+        <div className="text-lg font-semibold text-blue-900">
+          {item.itemName}
+        </div>
+        <div className="text-sm text-blue-700">
+          Category: {item.category}
         </div>
       </div>
 
+      {/* Generic Image */}
+      {item.suggestedImage && (
+        <div className="text-center">
+          <img
+            src={item.suggestedImage}
+            alt="Generic item representation"
+            className="w-full h-48 object-cover rounded-xl mx-auto"
+          />
+          <p className="text-sm text-gray-500 mt-2">
+            Generic representation for reference
+          </p>
+        </div>
+      )}
+
       {/* Confirmation Buttons */}
       {!showCorrection && (
-        <div className="flex gap-3 mb-4">
+        <div className="space-y-3">
           <button
-            onClick={handleConfirm}
-            className="flex-1 bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors"
+            onClick={() => handleConfirm(true)}
+            className="w-full py-3 bg-green-600 text-white rounded-xl hover:bg-green-700 transition-colors font-semibold"
           >
             ✅ Yes, that&apos;s correct
           </button>
+          
           <button
-            onClick={handleDeny}
-            className="flex-1 bg-red-600 text-white py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors"
+            onClick={() => handleConfirm(false)}
+            className="w-full py-3 bg-red-600 text-white rounded-xl hover:bg-red-700 transition-colors font-semibold"
           >
             ❌ No, that&apos;s wrong
+          </button>
+          
+          <button
+            onClick={handleSkip}
+            className="w-full py-3 bg-gray-500 text-white rounded-xl hover:bg-gray-600 transition-colors font-semibold"
+          >
+            ⏭️ Skip this step
           </button>
         </div>
       )}
 
-      {/* Correction Input */}
+      {/* Correction Form */}
       {showCorrection && (
-        <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            What is this item actually?
-          </label>
-          <input
-            type="text"
-            value={correctedName}
-            onChange={(e) => setCorrectedName(e.target.value)}
-            placeholder="Enter the correct item name"
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          />
-          <button
-            onClick={handleCorrection}
-            className="w-full mt-3 bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
-          >
-            Continue with corrected name
-          </button>
+        <div className="space-y-4">
+          <div className="text-center">
+            <h3 className="text-lg font-semibold text-gray-800 mb-2">What is this item?</h3>
+            <p className="text-gray-600">Help us improve by providing the correct identification</p>
+          </div>
+          
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Item Name *
+            </label>
+            <input
+              type="text"
+              value={correctedName}
+              onChange={(e) => setCorrectedName(e.target.value)}
+              placeholder="e.g., Vintage Golf Club, Designer Handbag, etc."
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              autoFocus
+            />
+          </div>
+          
+          <div className="flex gap-3">
+            <button
+              onClick={() => setShowCorrection(false)}
+              className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+            >
+              Cancel
+            </button>
+            <button
+              onClick={handleSubmitCorrection}
+              disabled={!correctedName.trim()}
+              className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              Submit Correction
+            </button>
+          </div>
         </div>
       )}
 
       {/* Help Text */}
       <div className="text-center text-sm text-gray-500">
-        <p>This helps us provide more accurate pricing and recommendations</p>
+        <p>💡 Tip: The more accurate the identification, the better our pricing recommendations will be!</p>
       </div>
     </div>
   );

@@ -1,8 +1,8 @@
-# ThriftScope - API Requirements & Setup Guide
+# FlipLab - API Requirements & Setup Guide
 
-## 🔑 API Overview
+## Overview
 
-ThriftScope integrates with multiple external APIs to provide comprehensive item analysis and marketplace data. This document outlines the requirements, setup process, and integration details for each API.
+FlipLab integrates with multiple external APIs to provide comprehensive item analysis and marketplace data. This document outlines the requirements, setup process, and integration details for each
 
 ## 🎯 Required APIs
 
@@ -25,7 +25,7 @@ ThriftScope integrates with multiple external APIs to provide comprehensive item
 ##### **Step 1: Create Google Cloud Project**
 1. Go to [Google Cloud Console](https://console.cloud.google.com/)
 2. Click "Select a project" → "New Project"
-3. Enter project name (e.g., "thriftscope-vision")
+3. Enter project name (e.g., "fliplab-vision")
 4. Click "Create"
 
 ##### **Step 2: Enable Vision API**
@@ -38,8 +38,8 @@ ThriftScope integrates with multiple external APIs to provide comprehensive item
 1. Go to "APIs & Services" → "Credentials"
 2. Click "Create Credentials" → "Service Account"
 3. Enter service account details:
-   - Name: `thriftscope-vision`
-   - Description: `Service account for ThriftScope Vision API`
+   - Name: `fliplab-vision`
+- Description: `Service account for FlipLab Vision API`
 4. Click "Create and Continue"
 
 ##### **Step 4: Assign Roles**
@@ -58,7 +58,7 @@ ThriftScope integrates with multiple external APIs to provide comprehensive item
 ```env
 GOOGLE_CLOUD_PROJECT_ID=your-project-id-here
 GOOGLE_CLOUD_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\nYour private key content here\n-----END PRIVATE KEY-----\n"
-GOOGLE_CLOUD_CLIENT_EMAIL=thriftscope-vision@your-project.iam.gserviceaccount.com
+GOOGLE_CLOUD_CLIENT_EMAIL=fliplab-vision@your-project.iam.gserviceaccount.com
 ```
 
 #### **API Usage Example**
@@ -110,7 +110,7 @@ const [result] = await vision.labelDetection({
 1. Go to "My Account" → "Application Keys"
 2. Click "Create a New Application"
 3. Fill in application details:
-   - Application Name: `ThriftScope`
+   - Application Name: `FlipLab`
    - Developer Account: Your eBay account
    - Application Type: `Web Application`
 4. Click "Create Application"
@@ -344,10 +344,10 @@ console.log('API Health:', apiHealth);
 ### **Support Channels**
 - **Google Cloud**: [Support Portal](https://cloud.google.com/support)
 - **eBay Developer**: [Developer Support](https://developer.ebay.com/support)
-- **ThriftScope**: GitHub Issues
+- **FlipLab**: GitHub Issues
 
 ---
 
 **Last Updated**: January 2024  
 **Version**: 1.0.0  
-**Maintained By**: ThriftScope Development Team
+**Maintained By**: FlipLab Development Team
